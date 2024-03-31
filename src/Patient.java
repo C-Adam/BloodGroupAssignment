@@ -1,41 +1,41 @@
 public class Patient {
-    private int idNumber;
+    private int id_number;
     private int age;
-    private BloodData bloodData;
+    private BloodData blood_data;
 
     public Patient() {
-        this.idNumber = 0;
+        this.id_number = 0;
         this.age = 0;
-        this.bloodData = new BloodData();
+        this.blood_data = new BloodData();
     }
 
     public Patient(int idNumber, int age, BloodData bloodData) {
-        this.idNumber = idNumber;
+        this.id_number = idNumber;
         this.age = age;
-        this.bloodData = bloodData;
+        this.blood_data = bloodData;
     }
 
-    public int getIdNumber() {
-        return idNumber;
+    public int GetIdNumber() {
+        return id_number;
     }
 
-    public void setIdNumber(int idNumber) {
-        this.idNumber = idNumber;
+    public void SetIdNumber(int idNumber) {
+        this.id_number = idNumber;
     }
 
-    public int getAge() {
+    public int GetAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void SetAge(int age) {
         this.age = age;
     }
 
-    public BloodData getBloodData() {
-        return bloodData;
+    public BloodData GetBloodData() {
+        return blood_data;
     }
 
-    public void setBloodData(BloodData bloodData) {
-        this.bloodData = bloodData;
+    public void SetBloodData(BloodData bloodData) {
+        this.blood_data = bloodData;
     }
 }

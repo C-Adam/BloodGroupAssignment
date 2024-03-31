@@ -1,34 +1,27 @@
 import javax.swing.*;
-import java.util.Scanner;
-
 public class TestPatient {
     public static void main(String[] args) {
+        //Creating the first 3 patient objects
+        Patient default_patient = new Patient();
+        Patient user_patient = new Patient();
+        Patient mixed_patient = new Patient();
 
-        // Declare three Patient objects
-        Patient defaultPatient = new Patient();
-        Patient userPatient = new Patient();
-        Patient mixedPatient = new Patient();
+        //Get the values for the second Patient object
+        user_patient.SetIdNumber(Integer.parseInt(JOptionPane.showInputDialog("Enter second patient ID Number")));
+        user_patient.SetAge(Integer.parseInt(JOptionPane.showInputDialog("Enter second patient age")));
+        user_patient.SetBloodData(TestBloodData.GetUserBloodData());
 
-        // Prompt the user for values for the second Patient object
-        userPatient.setIdNumber(Integer.parseInt(JOptionPane.showInputDialog("Enter second patient ID Number")));
-        userPatient.setAge(Integer.parseInt(JOptionPane.showInputDialog("Enter second patient age")));
-        userPatient.setBloodData(TestBloodData.getUserBloodData());
+        // Get the values for the mixed patient data
+        mixed_patient.SetIdNumber(Integer.parseInt(JOptionPane.showInputDialog("Enter patient ID number for mixed patient: ")));
+        mixed_patient.SetAge(Integer.parseInt(JOptionPane.showInputDialog("Enter patient age for mixed patient: ")));
 
-        // Prompt the user for Patient data but use default values for that Patient’s BloodData
-        mixedPatient.setIdNumber(Integer.parseInt(JOptionPane.showInputDialog("Enter patient ID number for mixed patient: ")));
-        mixedPatient.setAge(Integer.parseInt(JOptionPane.showInputDialog("Enter patient age for mixed patient: ")));
-
-        // Display details of all three Patient objects
-        displayPatient("Default Patient", defaultPatient);
-        displayPatient("User Patient", userPatient);
-        displayPatient("Mixed Patient", mixedPatient);
+        // Display all the details
+        DisplayPatientData("Default Patient", default_patient);
+        DisplayPatientData("User Patient", user_patient);
+        DisplayPatientData("Mixed Patient", mixed_patient);
     }
 
-    private static void displayPatient(String title, Patient patient) {
-        System.out.println("\n" + title + ":");
-        System.out.println("ID Number: " + patient.getIdNumber());
-        System.out.println("Age: " + patient.getAge());
-        System.out.println("Blood Data - Blood Type: " + patient.getBloodData().getBloodType());
-        System.out.println("Blood Data - Rh Factor: " + patient.getBloodData().getRhFactor());
+    private static void DisplayPatientData(String title, Patient patient) {
+        JOptionPane.showMessageDialog(null, title + ":" + "\n" + "ID Number: " + patient.GetIdNumber() + "\n" + "Age: " + patient.GetAge() + "\n" + "Blood Data - Blood Type: " + patient.GetBloodData().GetBloodType() + "\n" + "Blood Data - Rh Factor: " + patient.GetBloodData().GetRhFactor());
     }
 }

@@ -1,36 +1,29 @@
 import javax.swing.*;
-import java.util.Scanner;
-
 public class TestBloodData {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        BloodData default_blood_data = new BloodData();
 
-        BloodData defaultBloodData = new BloodData();
-
-        // Prompt the user for values for the second object
+        // Get user values
         BloodData.BloodType user_bloodtype = BloodData.BloodType.valueOf(JOptionPane.showInputDialog("Enter your blood type (A, B, O, AB)"));
         BloodData.RhFactor user_rhFactor = BloodData.RhFactor.valueOf(JOptionPane.showInputDialog("Enter your blood rh factor (POSITIVE, NEGATIVE)"));
-        BloodData userBloodData = new BloodData(user_bloodtype, user_rhFactor);
+        BloodData user_blood_data = new BloodData(user_bloodtype, user_rhFactor);
 
-        // Display the details of both objects
-        displayBloodData("Default Blood Data", defaultBloodData);
-        displayBloodData("User Blood Data", userBloodData);
+        DisplayBloodData("Default Blood Data", default_blood_data);
 
-        // Change the values in the default object using user's values
-        defaultBloodData.setBloodType(user_bloodtype);
-        defaultBloodData.setRhFactor(user_rhFactor);
+        // Change the values in the default object with the new user values
+        default_blood_data.SetBloodType(user_bloodtype);
+        default_blood_data.SetRhFactor(user_rhFactor);
 
-        // Display the details for the default object again to confirm the changes
-        displayBloodData("Updated Default Blood Data", defaultBloodData);
+        // Display the details
+        DisplayBloodData("User Blood Data", user_blood_data);
+        DisplayBloodData("Updated Default Blood Data", default_blood_data);
     }
-    public static BloodData getUserBloodData(){
+    public static BloodData GetUserBloodData(){
         BloodData.BloodType user_bloodtype = BloodData.BloodType.valueOf(JOptionPane.showInputDialog("Enter your blood type (A, B, O, AB)"));
         BloodData.RhFactor user_rhFactor = BloodData.RhFactor.valueOf(JOptionPane.showInputDialog("Enter your blood rh factor (POSITIVE, NEGATIVE)"));
         return new BloodData(user_bloodtype, user_rhFactor);
     }
-    private static void displayBloodData(String title, BloodData bloodData) {
-        System.out.println("\n" + title + ":");
-        System.out.println("Blood Type: " + bloodData.getBloodType());
-        System.out.println("Rh Factor: " + bloodData.getRhFactor());
+    public static void DisplayBloodData(String title, BloodData blood_data) {
+        JOptionPane.showMessageDialog(null,  title + ":" + "\n" + "Blood Type: " + blood_data.GetBloodType() + "\n" + "Rh Factor: " + blood_data.GetRhFactor());
     }
 }
